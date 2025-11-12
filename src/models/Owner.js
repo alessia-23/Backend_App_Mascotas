@@ -37,17 +37,17 @@ const ownerSchema = new Schema({
         type: String,
         required: true
     },
-    status: {
-        type: Boolean,
-        default: true
-    },
     token: {
         type: String,
         default: null
     },
-    confirmEmail: {
+    status: {
         type: Boolean,
         default: false
+    },
+    confirmEmail: {
+        type: Boolean,
+        default: true
     },
     rol: {
         type: String,
