@@ -1,14 +1,21 @@
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+dotenv.config();
 
-mongoose.set('strictQuery', true)
+mongoose.set('strictQuery', true);
 
-const connection = async()=>{
+const connection = async () => {
     try {
-        const {connection} = await mongoose.connect(process.env.MONGODB_URI_LOCAL)
-        console.log(`Database is connected on ${connection.host} - ${connection.port}`)
-    } catch (error) {
-        console.log(error);
-    }
-}
+        // Conectarse a MongoDB Atlas (variable del entorno en Vercel)
+        const conn = await mongoose.connect(process.env.MONGODB_URI, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
 
-export default  connection
+        console.log(`✅ Database connected: ${conn.connection.host}`);
+    } catch (error) {
+        console.error('❌ Error connecting to MongoDB Atlas:', error.message);
+    }
+};
+
+export default connection;
