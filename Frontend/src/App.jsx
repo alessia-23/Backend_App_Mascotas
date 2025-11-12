@@ -34,7 +34,7 @@ function App() {
 
 
         <Route path='/dashboard' element={<Dashboard/>}>
-          <Route index element={<Panel/>}/>
+          {/* <Route index element={<Panel/>}/> */}
           <Route path='profile' element={<Profile/>}/>
           <Route path='list' element={<List/>}/>
           <Route path='details/:id' element={<Details/>}/>
